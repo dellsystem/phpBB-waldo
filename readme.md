@@ -15,6 +15,7 @@ Features
 Screenshots and demo
 --------------------
 ![Screenshot](http://www.phpbb.com/community/download/file.php?id=133624&mode=view)
+
 [Demo board](http://saa.ulmb.com/phpbb)
 *Note: Waldo is displayed on every page for the demo board, for demonstration purposes obviously.*
 
@@ -22,6 +23,7 @@ Development notes (for myself)
 ------------------------------
 
 Only add the relevant files:
+
 *   waldo_mod_install.php
 *   includes/acp shit
 *   image of waldo
