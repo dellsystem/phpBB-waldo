@@ -13,20 +13,27 @@
 		<author>
 			<username>dellsystem</username>
 			<realname>N/A</realname>
-			<homepage>http://dev.ulmb.com</homepage>
+			<homepage>http://www.dellsystem.me</homepage>
 			<email>dellsystem@phpbb.com</email>
 		</author>
 	</author-group>
 
-	<mod-version>0.0.1</mod-version>
+	<mod-version>0.0.2</mod-version>
 
 	<installation>
 		<level>easy</level>
 		<time>300</time>
-		<target-version>3.0.7-pl1</target-version>
+		<target-version>3.0.8</target-version>
 	</installation>
 
 	<history>
+        <entry>
+            <date>2011-05-??</date>
+            <rev-version>0.0.1</rev-version>
+            <changelog lang="en">
+                <change>In progress</change>
+            </changelog>
+        </entry>
 		<entry>
 			<date>2010-06-29</date>
 			<rev-version>0.0.1</rev-version>
