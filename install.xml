@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
+<header>
+	<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
+	<title lang="en">Where's Waldo Mod</title>
+	<description lang="en">A small image of Waldo [US] / Wally [UK] may appear somewhere on every page as you browse the board. The probability of finding Waldo on any page can be adjusted during installation, with the default probability at 4%.</description>
+
+	<author-notes lang="en">Can be configured to work with the Ultimate Points MOD if you have it installed, so that finding or clicking on Waldo will give the user points.</author-notes>
+
+	<author-group>
+		<author>
+			<username>dellsystem</username>
+			<realname>N/A</realname>
+			<homepage>http://dev.ulmb.com</homepage>
+			<email>dellsystem@phpbb.com</email>
+		</author>
+	</author-group>
+
+	<mod-version>0.0.1</mod-version>
+
+	<installation>
+		<level>easy</level>
+		<time>300</time>
+		<target-version>3.0.7-pl1</target-version>
+	</installation>
+
+	<history>
+		<entry>
+			<date>2010-06-29</date>
+			<rev-version>0.0.1</rev-version>
+			<changelog lang="en">
+				<change>First version released</change>
+			</changelog>
+		</entry>
+	</history>
+</header>
+
+<action-group>
+	<copy>
+		<file from="root/adm/style/acp_waldo.html" to="adm/style/acp_waldo.html" />
+		<file from="root/includes/acp/acp_waldo.php" to="includes/acp/acp_waldo.php" />
+		<file from="root/includes/acp/info/acp_waldo.php" to="includes/acp/info/acp_waldo.php" />
+		<file from="root/waldo_mod_install.php" to="waldo_mod_install.php" />
+		<file from="root/images/waldo_body.png" to="images/waldo_body.png" />
+	</copy>
+	<open src="includes/functions.php">
+		<edit>
+			<find><![CDATA[// The following assigns all _common_ variables that may be used at any point in a template.]]></find>
+			<action type="before-add"><![CDATA[	//Begin Where's Waldo MOD
+	$waldo_vertical = $config['waldo_vertical'];
+	$waldo_horizontal = $config['waldo_horizontal'];
+	$probability = $config['waldo_probability'];
+	$rand_top = ( $probability > 0 ) ? mt_rand(0, $waldo_vertical / $probability) : 0;
+	$rand_left = mt_rand(0, $waldo_horizontal);
+	$found_waldo = ( $rand_top < $waldo_vertical && $probability > 0 ) ? TRUE : FALSE;
+	$waldo_link = "images/waldo_body.png";
+	$waldo_url_begin = ( $config['waldo_url_link'] !== '' ) ? '<a href="' . $config['waldo_url_link'] . '">' : '' ;
+	$waldo_url_end = ( $config['waldo_url_link'] !== '' ) ? '</a>' : '' ;
+	//The second part is just to make sure someone doesn't sneakily change waldo_points when they're not supposed to
+	if ( $found_waldo && defined('IN_ULTIMATE_POINTS') && ( $config['waldo_points'] > 0 ) && $user->data['is_registered'] )
+	{
+		add_points($user->data['user_id'], $config['waldo_points']);
+	}
+	//End Where's Waldo MOD]]></action>
+		</edit>
+		<edit>
+			<find><![CDATA['SITE_LOGO_IMG'			=> $user->img('site_logo'),]]></find>
+			<action type="after-add"><![CDATA[		'FOUND_WALDO' 			=> $found_waldo,
+		'RAND_TOP'			=> $rand_top,
+		'RAND_LEFT'			=> $rand_left,
+		'WALDO_LINK'			=> $waldo_link,
+		'WALDO_URL_BEGIN'		=> $waldo_url_begin,
+		'WALDO_URL_END'			=> $waldo_url_end,]]></action>
+		</edit>
+	</open>
+	<open src="styles/prosilver/template/overall_header.html">
+		<edit>
+			<comment lang="en">For styles other than prosilver, make the same change. As the tip suggests, this is indeed a partial find and not the whole line. Add the code below in the next line.</comment>
+			<find><![CDATA[<body]]></find>
+			<action type="after-add"><![CDATA[<!-- IF FOUND_WALDO -->
+<div id="waldo" style="width:0px; position:absolute; top:{RAND_TOP}px; left:{RAND_LEFT}px; display:block; border:0; padding:0; float:left;">
+{WALDO_URL_BEGIN}<img src="{WALDO_LINK}" />{WALDO_URL_END}
+</div>
+<!-- ENDIF -->]]></action>
+		</edit>
+	</open>
+    <diy-instructions lang="en">Navigate to waldo_mod_install.php in the root of your forum and follow the install instructions.
+
+You can configure this MOD in the ACP, under the .MODs tab.</diy-instructions>
+</action-group>
+</mod>
