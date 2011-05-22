@@ -1,9 +1,9 @@
 <?php
 /**
 *
-* @package acp
-* @version $Id$
-* @copyright (c) 2005 phpBB Group
+* @package Where's Waldo MOD
+* @version $Id: acp_dynamo.php ilostwaldo@gmail.com$
+* @copyright (c) 2011 dellsystem (www.dellsystem.me)
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
@@ -27,53 +27,54 @@ class acp_waldo
 	{
 		global $db, $user, $auth, $template;
 		global $config, $phpbb_root_path, $phpbb_admin_path, $phpEx;
+		$user->add_lang('mods/waldo/acp');
+		
+		$submit = ( isset($_POST['submit']) ) ? TRUE : FALSE;
+		
 		switch($mode)
 		{
 			case 'index':
-			$this->page_title = 'Where\'s Waldo MOD';
+			$this->page_title = 'WALDO_MOD';
  			$this->tpl_name = 'acp_waldo';
 	
-			$submit = ( isset($_POST['submit']) ) ? TRUE : FALSE;
 			$error = array();//find out why later
 
-			if ( $submit )
+			if ($submit)
 			{
-				//First, validate stuff, then set_config
-				//This is a long and rather inefficient way of writing this but, screw it, fix later
-				$new_probability = request_var('waldo_probability', '');//has to be a string to allow for decimals lol
-				if ( $new_probability >= 0 && $new_probability <= 1 )//Must be a number between 0 and 1 (inclusive)
+				// First store all the post variables
+				$new_probability = request_var('waldo_probability', 0.0);
+				$new_url_link = request_var('waldo_url_link', '');
+				$new_horizontal = request_var('waldo_horizontal', 0);
+				$new_vertical = request_var('waldo_vertical', 0);
+				$new_points = request_var('waldo_points', 0.0);
+				
+				if ($new_probability >= 0 && $new_probability <= 1)
 				{
 					set_config('waldo_probability', $new_probability);
 				}
 				else
 				{
-					$error[] = 'Probability needs to be between 0 and 1.';
+					$error[] = $user->lang['PROBABILITY_ERROR'];
 				}
 
-				//CREATE A LOOP FOR THIS AND FIX THIS CRAPPY CODE KTHX
-				$new_url_link = request_var('waldo_url_link', '');//It's a string (obviously)
 				set_config('waldo_url_link', $new_url_link); 
 
-				$new_horizontal = request_var('waldo_horizontal', 0);
-				$new_vertical = request_var('waldo_vertical', 0);
-				$new_points = request_var('waldo_points', '');//also has to be a string to allow for decimals
-				if ( $new_horizontal > 0 )
+				if ($new_horizontal > 0)
 				{
 					set_config('waldo_horizontal', $new_horizontal);
 				}
 				else
 				{
-					//only integers allowed teehee
-					$error[] = 'Please enter an integer greater than zero for the horizontal maximum';
+					$error[] = $user->lang['HORIZONTAL_MAX_ERROR'];
 				}
 
-				if ( $new_vertical > 0 )
+				if ($new_vertical > 0)
 				{
 					set_config('waldo_vertical', $new_vertical);
 				}
 				else
 				{
-					$error[] = 'Please enter an integer greater than zero for the vertical maximum';
+					$error[] = $user->lang['VERTICAL_MAX_ERROR'];
 				}
 
 				if ( $new_points >= 0 )
@@ -82,19 +83,32 @@ class acp_waldo
 				}
 				else
 				{
-					$error[] = 'Please enter a non-negative number for the number of points to award';
+					$error[] = $user->lang['WALDO_POINTS_ERROR'];
 				}
 				
+				// If there are no errors, display a success message; else, show the error box
+				if (!sizeof($error))
+				{
+					trigger_error($user->lang['CONFIG_UPDATED'] . adm_back_link($this->u_action));
+				}
 			}
 
+			$l_waldo_status = ($config['waldo_probability'] > 0) ? $user->lang['ENABLED'] : $user->lang['DISABLED'];
+			$l_waldo_status = sprintf($user->lang['WALDO_STATUS'], $l_waldo_status);
+			
+			$l_up_status = (defined('IN_ULTIMATE_POINTS')) ? $user->lang['INSTALLED'] : $user->lang['NOT_INSTALLED'];
+			$l_up_status = sprintf($user->lang['UP_STATUS'], $l_up_status);
+
 			$template->assign_vars(array(
-				'WALDO_ENABLED_DISABLED'	=> ( $config['waldo_probability'] > 0 ) ? 'enabled' : 'disabled',
-				'S_UP_INSTALLED'		=> ( defined('IN_ULTIMATE_POINTS') ) ? TRUE : FALSE,
+				'S_UP_INSTALLED'		=> defined('IN_ULTIMATE_POINTS') ? true : false,
 
-				'S_ERROR'			=> (sizeof($error)) ? true : false,
-				'ERROR_MSG'			=> implode('<br />', $error),
-				'U_ACTION'			=> $this->u_action,
+				'S_ERROR'				=> (sizeof($error)) ? true : false,
+				'ERROR_MSG'				=> implode('<br />', $error),
+				'U_ACTION'				=> $this->u_action,
 
+				'L_WALDO_STATUS'		=> $l_waldo_status,
+				'L_UP_STATUS'			=> $l_up_status,
+				
 				'WALDO_PROBABILITY'		=> $config['waldo_probability'],
 				'WALDO_URL_LINK'		=> $config['waldo_url_link'],
 				'WALDO_HORIZONTAL'		=> $config['waldo_horizontal'],

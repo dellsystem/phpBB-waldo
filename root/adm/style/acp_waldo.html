@@ -2,9 +2,13 @@
 
 <a name="maincontent"></a>
 
-<h1>Where's Waldo overview</h1>
+<h1>{L_WALDO_MOD}</h1>
 
-<p>Here you can view and change the settings the Where's Waldo MOD. This MOD is currently <b>{WALDO_ENABLED_DISABLED}</b>. Ultimate Points MOD is <b><!-- IF S_UP_INSTALLED -->installed<!-- ELSE -->not installed<!-- ENDIF --></b>. (Note that you do not need Ultimate Points in order to use this MOD; it simply provides extra features.)</p>
+<p>{L_WALDO_SUMMARY}</p>
+
+<p>{L_WALDO_STATUS}</p>
+
+<p>{L_UP_STATUS}</p>
 
 <!-- IF S_ERROR -->
 	<div class="errorbox">
@@ -17,24 +21,24 @@
 	<fieldset>
 		<legend>Board settings</legend>
 		<dl>
-			<dt><label for="waldo_probability">Probability of finding Waldo on any page:</label><br /><span>Enter a number between 0 and 1. To disable this MOD, enter 0. To ensure that Waldo appears on every page, enter 1.</span></dt>
+			<dt><label for="waldo_probability">{L_WALDO_PROBABILITY}:</label><br /><span>{L_WALDO_PROBABILITY_EXPLAIN}</span></dt>
 			<dd><input id="waldo_probability" type="text" name="waldo_probability" maxlength="5" size="5" value="{WALDO_PROBABILITY}" /></dd>
 		</dl>
 		<dl>
-			<dt><label for="waldo_url">Make Waldo a hyperlink:</label><br /><span>The image of Waldo can be made into a hyperlink, so that clicking on it leads the user to another page. To enable this, enter the URL here, include the http:// if it's an offsite link); to disable, leave this field blank.</span></dt>
+			<dt><label for="waldo_url">{L_WALDO_URL}:</label><br /><span>{L_WALDO_URL_EXPLAIN}</span></dt>
 			<dd><input id="waldo_url" type="text" name="waldo_url_link" maxlength="255" size="40" value="{WALDO_URL_LINK}" /></dd>
 		</dl>
 		<dl>
-			<dt><label for="window">Window parameters:</label><br /><span>Set the vertical and horizontal parameters of the area in which Waldo can appear on a page. Waldo can appear anywhere between the left-hand side of the window and the horizontal maximum (as defined here) horizontally, and the top of the page and the vertical maximum (as defined here) vertically. Use the default parameters if confused.</span></dt>
-			<dd><label>Horizontal maximum: <input id="window" type="text" name="waldo_horizontal" maxlength="4" size="4" value="{WALDO_HORIZONTAL}" /></label><label>Vertical maximum: <input id="window" type="text" name="waldo_vertical" maxlength="4" size="4" value="{WALDO_VERTICAL}" /></dd>
+			<dt><label>{L_WALDO_WINDOW}:</label><br /><span>{L_WALDO_WINDOW_EXPLAIN}</span></dt>
+			<dd><label for="waldo_horizontal">{L_HORIZONTAL_MAX}:</label> <input id="waldo_horizontal" type="text" name="waldo_horizontal" maxlength="4" size="4" value="{WALDO_HORIZONTAL}" /><br /><label for="waldo_vertical">{L_VERTICAL_MAX}:</label> <input id="waldo_vertical" type="text" name="waldo_vertical" maxlength="4" size="4" value="{WALDO_VERTICAL}" /></dd>
 		</dl>
 	</fieldset>
 
 	<!-- IF S_UP_INSTALLED -->
 	<fieldset>
-		<legend>Ultimate Points MOD extension</legend>
+		<legend>{L_UP_EXTENSION}</legend>
 			<dl>
-			<dt><label for="waldo_points">Points to award:</label><br /><span>The number of points to be awarded to each user who stumbles upon Waldo. Set to 0 to disable. Only registered users will be able to receive points.</span></dt>
+			<dt><label for="waldo_points">{L_WALDO_POINTS}:</label><br /><span>{L_WALDO_POINTS_EXPLAIN}</span></dt>
 			<dd><input id="waldo_points" type="text" size="8" maxlength="8" name="waldo_points" value="{WALDO_POINTS}" /> {POINTS_NAME}</dd>
 		</dl>
 	</fieldset>

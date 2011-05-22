@@ -1,9 +1,9 @@
 <?php
 /**
 *
-* @package acp
-* @version $Id$
-* @copyright (c) 2005 phpBB Group
+* @package Where's Waldo MOD
+* @version $Id: acp_dynamo.php ilostwaldo@gmail.com$
+* @copyright (c) 2011 dellsystem (www.dellsystem.me)
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
 *
 */
