@@ -24,7 +24,8 @@ if (empty($lang) || !is_array($lang))
 
 // Merge the following language entries into the lang array
 $lang = array_merge($lang, array(
-	//'ACP_WALDO_MOD'			=> "Where's Waldo MOD",
+	'ACP_WALDO_MOD'			=> "Where's Waldo MOD",
+	'LOG_WALDO_UPDATE'		=> "<strong>Altered Where's Waldo MOD settings</strong>",
 ));
 
 ?>

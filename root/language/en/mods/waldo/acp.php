@@ -24,7 +24,6 @@ if (empty($lang) || !is_array($lang))
 
 // Merge the following language entries into the lang array
 $lang = array_merge($lang, array(
-	'WALDO_MOD'					=> "Where's Waldo MOD",
 	'PROBABILITY_ERROR'			=> 'The probability needs to be between 0 and 1.',
 	'HORIZONTAL_MAX_ERROR'		=> 'Please enter an integer greater than zero for the horizontal maximum.',
 	'VERTICAL_MAX_ERROR'		=> 'Please enter an integer greater than zero for the vertical maximum.',
@@ -47,6 +46,10 @@ $lang = array_merge($lang, array(
 	'WALDO_POINTS'				=> 'Points to award',
 	'WALDO_POINTS_EXPLAIN'		=> 'The number of points to be awarded to each user who stumbles upon Waldo. Set to 0 to disable. Only registered users will be able to receive points.',
 	'WALDO_POINTS_ERROR'		=> 'Please enter a non-negative number for the number of points to award',
+	'WALDO_MOUSEOVER'			=> 'Mouseover text',
+	'WALDO_MOUSEOVER_EXPLAIN'	=> 'The text that will appear when a user hovers over Waldo. Set to blank to disable.',
+	'WALDO_IMAGE'				=> 'URL to Waldo image',
+	'WALDO_IMAGE_EXPLAIN'		=> "The URL, relative to the root of your phpBB installation, of the image you want to use. By default this is 'images/waldo_body.png', which comes with this MOD.",
 ));
 
 ?>

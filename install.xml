@@ -28,10 +28,18 @@
 
 	<history>
         <entry>
-            <date>2011-05-??</date>
-            <rev-version>0.0.1</rev-version>
+            <date>2011-05-22</date>
+            <rev-version>0.0.2</rev-version>
             <changelog lang="en">
-                <change>In progress</change>
+                <change>Incorporated use of language constants within the ACP</change>
+                <change>Made use of trigger_error upon changing config settings</change>
+                <change>Fixed casting of some post variables (string to float)</change>
+                <change>Added z-index to the div so that Waldo appears above everything else</change>
+                <change>Cleaned up inline styling of the Waldo div</change>
+                <change>Added mouseover text (config setting)</change>
+                <change>Cleaned up changes in functions.php and overall_header.html</change>
+                <change>Added option to change the image URL (config setting)</change>
+                <change>Added log entry upon updating settings</change>
             </changelog>
         </entry>
 		<entry>

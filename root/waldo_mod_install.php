@@ -32,7 +32,7 @@ $mod_name = 'Where\'s Waldo MOD';
 * The name of the config variable which will hold the currently installed version
 * You do not need to set this yourself, UMIL will handle setting and updating the version itself.
 */
-$version_config_name = 'test_version';
+$version_config_name = 'waldo_version';
 
 /*
 * The language file which will be included when installing
@@ -67,6 +67,30 @@ $logo_img = 'images/waldo_body.png';
 * The version numbering must otherwise be compatible with the version_compare function - http://php.net/manual/en/function.version-compare.php
 */
 $versions = array(
+	// Version 0.0.2
+	'0.0.2'	=> array(
+		array('waldo_probability', '0.04'),
+		array('waldo_horizontal', 1000),
+		array('waldo_vertical', 500),
+		array('waldo_url_link', ''),
+		array('waldo_points', 0),
+		array('waldo_mouseover', ''),
+		array('waldo_image_link', 'images/waldo_body.png'),
+	),
+		
+	// Add the module
+	'module_add' => array(
+		// Add category Where's Waldo MOD under the .MODs tab
+		array('acp', 'ACP_CAT_DOT_MODS', 'ACP_WALDO_MOD'),
+
+		// Add module General Configuration under the Where's Waldo category
+		array('acp', 'ACP_WALDO_MOD', array(
+				'module_basename'		=> 'waldo',
+				'modes'				=> array('index'),
+			),
+		),
+	),
+		
 	// Version 0.0.1
 	'0.0.1'	=> array(
 		// Add six configs

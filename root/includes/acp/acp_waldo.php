@@ -34,16 +34,18 @@ class acp_waldo
 		switch($mode)
 		{
 			case 'index':
-			$this->page_title = 'WALDO_MOD';
+			$this->page_title = 'ACP_WALDO_MOD';
  			$this->tpl_name = 'acp_waldo';
 	
-			$error = array();//find out why later
+			$error = array();
 
 			if ($submit)
 			{
 				// First store all the post variables
 				$new_probability = request_var('waldo_probability', 0.0);
 				$new_url_link = request_var('waldo_url_link', '');
+				$new_image_link = request_var('waldo_image_link', '');
+				$new_mouseover = request_var('waldo_mouseover', '');
 				$new_horizontal = request_var('waldo_horizontal', 0);
 				$new_vertical = request_var('waldo_vertical', 0);
 				$new_points = request_var('waldo_points', 0.0);
@@ -58,6 +60,8 @@ class acp_waldo
 				}
 
 				set_config('waldo_url_link', $new_url_link); 
+				set_config('waldo_mouseover', $new_mouseover); 
+				set_config('waldo_image_link', $new_image_link);
 
 				if ($new_horizontal > 0)
 				{
@@ -89,6 +93,7 @@ class acp_waldo
 				// If there are no errors, display a success message; else, show the error box
 				if (!sizeof($error))
 				{
+					add_log('admin', 'LOG_WALDO_UPDATE');
 					trigger_error($user->lang['CONFIG_UPDATED'] . adm_back_link($this->u_action));
 				}
 			}
@@ -111,6 +116,8 @@ class acp_waldo
 				
 				'WALDO_PROBABILITY'		=> $config['waldo_probability'],
 				'WALDO_URL_LINK'		=> $config['waldo_url_link'],
+				'WALDO_IMAGE_LINK'		=> $config['waldo_image_link'],
+				'WALDO_MOUSEOVER'		=> $config['waldo_mouseover'],
 				'WALDO_HORIZONTAL'		=> $config['waldo_horizontal'],
 				'WALDO_VERTICAL'		=> $config['waldo_vertical'],
 				'WALDO_POINTS'			=> $config['waldo_points'],
