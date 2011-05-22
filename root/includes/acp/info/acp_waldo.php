@@ -25,7 +25,7 @@ class acp_waldo_info
     {
         return array(
             'filename'    => 'acp_waldo',
-            'title'        => 'ACP_WALDO',
+            'title'        => 'ACP_WALDO_MOD',
             'version'    => '0.0.1',
             'modes'        => array(
             	// Maybe add actual permissions later

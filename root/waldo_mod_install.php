@@ -69,33 +69,16 @@ $logo_img = 'images/waldo_body.png';
 $versions = array(
 	// Version 0.0.2
 	'0.0.2'	=> array(
-		array('waldo_probability', '0.04'),
-		array('waldo_horizontal', 1000),
-		array('waldo_vertical', 500),
-		array('waldo_url_link', ''),
-		array('waldo_points', 0),
-		array('waldo_mouseover', ''),
-		array('waldo_image_link', 'images/waldo_body.png'),
-	),
-		
-	// Add the module
-	'module_add' => array(
-		// Add category Where's Waldo MOD under the .MODs tab
-		array('acp', 'ACP_CAT_DOT_MODS', 'ACP_WALDO_MOD'),
-
-		// Add module General Configuration under the Where's Waldo category
-		array('acp', 'ACP_WALDO_MOD', array(
-				'module_basename'		=> 'waldo',
-				'modes'				=> array('index'),
-			),
+		'config_add'	=> array(
+			array('waldo_mouseover', ''),
+			array('waldo_image_link', 'images/waldo_body.png'),
 		),
 	),
 		
 	// Version 0.0.1
 	'0.0.1'	=> array(
-		// Add six configs
+		// Add the configs
 		'config_add'	=> array(
-			array('waldo_version', '0.0.1'),
 			array('waldo_probability', '0.04'),
 			array('waldo_horizontal', 1000),
 			array('waldo_vertical', 400),
@@ -105,12 +88,11 @@ $versions = array(
 
 		// Add the module
 		'module_add' => array(
-
 			// Add category Where's Waldo MOD under the .MODs tab
-			array('acp', 31, 'Where\'s Waldo MOD'),
+			array('acp', 'ACP_CAT_DOT_MODS', 'ACP_WALDO_MOD'),
 
 			// Add module General Configuration under the Where's Waldo category
-			array('acp', 'Where\'s Waldo MOD', array(
+			array('acp', 'ACP_WALDO_MOD', array(
 					'module_basename'		=> 'waldo',
 					'modes'				=> array('index'),
 				),
