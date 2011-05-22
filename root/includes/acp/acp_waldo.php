@@ -1,4 +1,24 @@
 <?php
+/**
+*
+* @package acp
+* @version $Id$
+* @copyright (c) 2005 phpBB Group
+* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+*
+*/
+
+/**
+* @ignore
+*/
+if (!defined('IN_PHPBB'))
+{
+	exit;
+}
+
+/**
+* @package acp
+*/
 class acp_waldo
 {
 	var $u_action;
@@ -56,7 +76,7 @@ class acp_waldo
 					$error[] = 'Please enter an integer greater than zero for the vertical maximum';
 				}
 
-				if ( $waldo_points >= 0 )
+				if ( $new_points >= 0 )
 				{
 					set_config('waldo_points', $new_points);
 				}
