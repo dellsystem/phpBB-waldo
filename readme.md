@@ -1,31 +1,13 @@
-What is this?
--------------
+Where's Waldo MOD for phpBB
+===========================
 
 A rather silly modification for phpBB. A small image of Waldo [US] / Wally [UK] may appear somewhere on every page as you browse the board. Inspired by Xore's 2.x MOD CamelMOD.
 
-Features
---------
+*	[Features, screenhots, download links and more](http://dellsystem.me/phpbb-waldo)
+*	[Demo board](http://phpbb.dellsystem.me/waldo/) (Waldo is displayed on every page of the demo board, for demonstration purposes)
+*	[MOD development topic at phpBB.com](http://www.phpbb.com/community/viewtopic.php?f=70&t=2092309)
 
-*   A small image of Waldo [US] / Wally [UK] may appear somewhere on every page as you browse the board
-*   The probability of finding Waldo is adjustable through the ACP
-*   The size of the area in which Waldo can appear is also adjustable
-*   If you have the Ultimate Points MOD installed, points will be awarded to a user who stumbles upon Waldo (configurable in the ACP of course)
-*   You can set it so that clicking on the image of Waldo will lead you to another page (either within your domain or offsite)
+Contributing and requesting features
+------------------------------------
 
-Screenshots and demo
---------------------
-![Screenshot](http://www.phpbb.com/community/download/file.php?id=133624&mode=view)
-
-[Demo board](http://saa.ulmb.com/phpbb)
-*Note: Waldo is displayed on every page for the demo board, for demonstration purposes obviously.*
-
-Development notes (for myself)
-------------------------------
-
-Only add the relevant files:
-
-*   waldo_mod_install.php
-*   includes/acp shit
-*   image of waldo
-*   adm/style shit
-*   modx file I guess
+If you'd like to contribute, feel free to fork away and send me a pull request. If there's a specific feature you'd like to see or bug that you think needs fixing, you can 1) code it yourself and send me a pull request; 2) post in the [development topic](http://www.phpbb.com/community/viewtopic.php?f=70&t=2092309) letting me know; 3) add an issue to the issue tracker; or 4) send me a [private message](http://www.phpbb.com/community/ucp.php?i=pm&mode=compose&u=178433) or [email](mailto:dellsystem@phpbb.com).

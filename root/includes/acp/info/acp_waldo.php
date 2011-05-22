@@ -28,6 +28,7 @@ class acp_waldo_info
             'title'        => 'ACP_WALDO',
             'version'    => '0.0.1',
             'modes'        => array(
+            	// Maybe add actual permissions later
                 'index'     => array('title' => 'ACP_GENERAL_CONFIGURATION', 'auth' => 'acl_a_board', 'cat' => array('')),
             ),
         );
