@@ -27,6 +27,14 @@
 	</installation>
 
 	<history>
+		<entry>
+			<data>2011-05-24</date>
+			<rev-version>0.0.3</rev-version>
+			<changelog lang="en">
+				<change>Got rid of unnecessary reference to $waldo_link in functions.php</change>
+				<change>Added call to utf8_normalize_nfc on mouseover text</change>
+			</changelog>
+		</entry>
         <entry>
             <date>2011-05-22</date>
             <rev-version>0.0.2</rev-version>
@@ -84,10 +92,9 @@
 		'FOUND_WALDO'			=> $found_waldo,
 		'RAND_TOP'				=> $rand_top,
 		'RAND_LEFT'				=> $rand_left,
-		'WALDO_LINK'			=> $waldo_link,
 		'WALDO_URL'				=> $config['waldo_url_link'],
 		'WALDO_MOUSEOVER'		=> $config['waldo_mouseover'],
-		'WALDO_IMAGE'			=> $config['waldo_image_link'],
+		'WALDO_IMAGE'			=> utf8_normalize_nfc($config['waldo_mouseover']),
 		// End Where's Waldo MOD]]></action>
 		</edit>
 	</open>
