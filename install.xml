@@ -28,7 +28,7 @@
 
 	<history>
 		<entry>
-			<data>2011-05-24</date>
+			<date>2011-05-24</date>
 			<rev-version>0.0.3</rev-version>
 			<changelog lang="en">
 				<change>Got rid of unnecessary reference to $waldo_link in functions.php</change>
