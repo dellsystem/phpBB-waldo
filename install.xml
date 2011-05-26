@@ -28,6 +28,15 @@
 
 	<history>
 		<entry>
+			<date>2011-05-26</date>
+			<rev-version>0.0.4</rev-version>
+			<changelog lang="en">
+				<change>Replaced hardcoded text with language constants in ACP module</change>
+				<change>Fixed use of utf8_normalize_nfc on mouseover text</change>
+				<change>Fixed other bugs introduced in last update</change>
+			</changelog>
+		</entry>
+		<entry>
 			<date>2011-05-24</date>
 			<rev-version>0.0.3</rev-version>
 			<changelog lang="en">
@@ -89,12 +98,13 @@
 		<edit>
 			<find><![CDATA['SITE_LOGO_IMG'			=> $user->img('site_logo'),]]></find>
 			<action type="after-add"><![CDATA[		// Begin Where's Waldo MOD
-		'FOUND_WALDO'			=> $found_waldo,
+		'FOUND_WALDO' 			=> $found_waldo,
 		'RAND_TOP'				=> $rand_top,
 		'RAND_LEFT'				=> $rand_left,
+		'WALDO_LINK'			=> $waldo_link,
 		'WALDO_URL'				=> $config['waldo_url_link'],
 		'WALDO_MOUSEOVER'		=> $config['waldo_mouseover'],
-		'WALDO_IMAGE'			=> utf8_normalize_nfc($config['waldo_mouseover']),
+		'WALDO_IMAGE'			=> $config['waldo_image_link'],
 		// End Where's Waldo MOD]]></action>
 		</edit>
 	</open>

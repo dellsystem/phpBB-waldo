@@ -67,6 +67,9 @@ $logo_img = 'images/waldo_body.png';
 * The version numbering must otherwise be compatible with the version_compare function - http://php.net/manual/en/function.version-compare.php
 */
 $versions = array(
+	'0.0.4'	=> array(
+	),
+	
 	'0.0.3'	=> array(
 	),
 	
