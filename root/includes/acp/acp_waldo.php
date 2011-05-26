@@ -45,7 +45,7 @@ class acp_waldo
 				$new_probability = request_var('waldo_probability', 0.0);
 				$new_url_link = request_var('waldo_url_link', '');
 				$new_image_link = request_var('waldo_image_link', '');
-				$new_mouseover = request_var('waldo_mouseover', '');
+				$new_mouseover = utf8_normalize_nfc(request_var('waldo_mouseover', '', true));
 				$new_horizontal = request_var('waldo_horizontal', 0);
 				$new_vertical = request_var('waldo_vertical', 0);
 				$new_points = request_var('waldo_points', 0.0);
