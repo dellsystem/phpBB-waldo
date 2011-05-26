@@ -28,6 +28,15 @@
 
 	<history>
 		<entry>
+			<date>2011-05-26</date>
+			<rev-version>0.0.4</rev-version>
+			<changelog lang="en">
+				<change>Replaced hardcoded text with language constants in ACP module</change>
+				<change>Fixed use of utf8_normalize_nfc on mouseover text</change>
+				<change>Fixed other bugs introduced in last update</change>
+			</changelog>
+		</entry>
+		<entry>
 			<date>2011-05-24</date>
 			<rev-version>0.0.3</rev-version>
 			<changelog lang="en">
