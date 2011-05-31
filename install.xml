@@ -28,6 +28,13 @@
 
 	<history>
 		<entry>
+			<date>2011-05-31</date>
+			<rev-version>0.0.5</rev-version>
+			<changelog lang="en">
+				<change>Deleted another unnecessary reference to $waldo_link in functions.php</change>
+			</changelog>
+		</entry>
+		<entry>
 			<date>2011-05-26</date>
 			<rev-version>0.0.4</rev-version>
 			<changelog lang="en">
