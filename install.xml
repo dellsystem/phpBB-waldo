@@ -101,7 +101,6 @@
 		'FOUND_WALDO' 			=> $found_waldo,
 		'RAND_TOP'				=> $rand_top,
 		'RAND_LEFT'				=> $rand_left,
-		'WALDO_LINK'			=> $waldo_link,
 		'WALDO_URL'				=> $config['waldo_url_link'],
 		'WALDO_MOUSEOVER'		=> $config['waldo_mouseover'],
 		'WALDO_IMAGE'			=> $config['waldo_image_link'],
