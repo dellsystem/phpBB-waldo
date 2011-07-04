@@ -27,6 +27,13 @@
 	</installation>
 
 	<history>
+        <entry>
+            <date>2011-07-??</date>
+            <rev-version>0.1.0</rev-version>
+            <changelog lang="en">
+                <change>Added missing language files to the "copy" step in install.xml</change>
+            </changelog>
+        </entry>
 		<entry>
 			<date>2011-05-31</date>
 			<rev-version>0.0.5</rev-version>
@@ -83,6 +90,8 @@
 		<file from="root/includes/acp/info/acp_waldo.php" to="includes/acp/info/acp_waldo.php" />
 		<file from="root/waldo_mod_install.php" to="waldo_mod_install.php" />
 		<file from="root/images/waldo_body.png" to="images/waldo_body.png" />
+        <file from="root/language/en/mods/info_acp_waldo.php" to="language/en/mods/info_acp_waldo.php" />
+        <file from="root/language/en/mods/waldo/acp.php" to="language/en/mods/waldo/acp.php" />
 	</copy>
 	<open src="includes/functions.php">
 		<edit>
