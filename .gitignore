@@ -1,0 +1,9 @@
+# Only track specific files under root/
+root/*
+!root/waldo_mod_install.php
+!root/adm/style/acp_waldo.html
+!root/images/waldo_body.png
+!root/includes/acp/acp_waldo.php
+!root/includes/acp/info/acp_waldo.php
+!root/language/en/mods/info_acp_waldo.php
+!root/language/en/mods/waldo/acp.php
