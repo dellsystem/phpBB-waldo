@@ -32,9 +32,10 @@
             <rev-version>0.1.0</rev-version>
             <changelog lang="en">
                 <change>Added missing language files to the "copy" step in install.xml</change>
-                <change>Use a percent probability in the ACP</change>
-                <change>Use percent-based absolute positioning (got rid of the window size configs)</change>
-                <change>Use utf8_normalize_nfc for the URL configs</change>
+                <change>Added use of a percent probability in the ACP</change>
+                <change>Added percent-based absolute positioning (got rid of the window size configs)</change>
+                <change>Added use of utf8_normalize_nfc for the URL configs</change>
+                <change>Added alt tag to waldo image</change>
             </changelog>
         </entry>
 		<entry>
@@ -131,8 +132,8 @@
 			<comment lang="en">For styles other than prosilver, make the same change. As the tip suggests, this is indeed a partial find and not the whole line. Add the code below in the next line.</comment>
 			<find><![CDATA[<body]]></find>
 			<action type="after-add"><![CDATA[<!-- IF FOUND_WALDO -->
-	<div id="waldo" style="position: absolute; top: {RAND_TOP}px; left: {RAND_LEFT}px; z-index: 9001;">
-		<!-- IF WALDO_URL --><a href="{WALDO_URL}"><!-- ENDIF --><img src="{WALDO_IMAGE}" title="{WALDO_MOUSEOVER}" /><!-- IF WALDO_URL --></a><!-- ENDIF -->
+	<div id="waldo" style="position: absolute; {POSITION_VERTICAL}: {RAND_VERTICAL}%; {POSITION_HORIZONTAL}: {RAND_HORIZONTAL}%; z-index: 9001;">
+		<!-- IF WALDO_URL --><a href="{WALDO_URL}"><!-- ENDIF --><img src="{WALDO_IMAGE}" title="{WALDO_MOUSEOVER}" alt="{WALDO_MOUSEOVER}" /><!-- IF WALDO_URL --></a><!-- ENDIF -->
 	</div>
 <!-- ENDIF -->]]></action>
 		</edit>
