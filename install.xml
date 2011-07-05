@@ -34,6 +34,7 @@
                 <change>Added missing language files to the "copy" step in install.xml</change>
                 <change>Use a percent probability in the ACP</change>
                 <change>Use percent-based absolute positioning (got rid of the window size configs)</change>
+                <change>Use utf8_normalize_nfc for the URL configs</change>
             </changelog>
         </entry>
 		<entry>
