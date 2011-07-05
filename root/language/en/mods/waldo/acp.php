@@ -24,7 +24,7 @@ if (empty($lang) || !is_array($lang))
 
 // Merge the following language entries into the lang array
 $lang = array_merge($lang, array(
-	'PROBABILITY_ERROR'			=> 'The probability needs to be between 0 and 1.',
+	'PROBABILITY_ERROR'			=> 'The probability needs to be between 0 and 100 (inclusive), as a percentage.',
 	'HORIZONTAL_MAX_ERROR'		=> 'Please enter an integer greater than zero for the horizontal maximum.',
 	'VERTICAL_MAX_ERROR'		=> 'Please enter an integer greater than zero for the vertical maximum.',
 	'WALDO_SUMMARY'				=> "Here you can view and change the settings for the Where's Waldo MOD.",
@@ -35,7 +35,7 @@ $lang = array_merge($lang, array(
 	'INSTALLED'					=> 'installed',
 	'NOT_INSTALLED'				=> 'not installed',
 	'WALDO_PROBABILITY'			=> 'Probability of finding Waldo on any page',
-	'WALDO_PROBABILITY_EXPLAIN'	=> 'Enter a number between 0 and 1. To disable this MOD, enter 0. To ensure that Waldo appears on every page, enter 1.',
+	'WALDO_PROBABILITY_EXPLAIN'	=> 'Enter a percentage between 0 and 100. To disable this MOD, enter 0. To ensure that Waldo appears on every page, enter 100.',
 	'WALDO_URL'					=> 'Make Waldo a hyperlink',
 	'WALDO_URL_EXPLAIN'			=> "The image of Waldo can be made into a hyperlink, so that clicking on it leads the user to another page. To enable this, enter the URL here (include the http:// if it's an off-site link); to disable, leave this field blank.",
 	'WALDO_WINDOW'				=> 'Window parameters',
