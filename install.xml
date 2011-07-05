@@ -33,6 +33,7 @@
             <changelog lang="en">
                 <change>Added missing language files to the "copy" step in install.xml</change>
                 <change>Use a percent probability in the ACP</change>
+                <change>Use percent-based absolute positioning (got rid of the window size configs)</change>
             </changelog>
         </entry>
 		<entry>
@@ -98,12 +99,10 @@
 		<edit>
 			<find><![CDATA[// The following assigns all _common_ variables that may be used at any point in a template.]]></find>
 			<action type="before-add"><![CDATA[	// Begin Where's Waldo MOD
-	$waldo_vertical = $config['waldo_vertical'];
-	$waldo_horizontal = $config['waldo_horizontal'];
-	$probability = $config['waldo_probability'] / 100;
-	$rand_top = ($probability > 0) ? mt_rand(0, $waldo_vertical / $probability) : 0;
-	$rand_left = mt_rand(0, $waldo_horizontal);
-	$found_waldo = ($rand_top < $waldo_vertical && $probability > 0) ? true : false;
+	$probability = $config['waldo_probability'];
+	$rand_top = ($probability > 0) ? mt_rand(0, 100) : 0;
+	$rand_left = mt_rand(0, $probability);
+	$found_waldo = ($rand_top < $probability && $probability > 0) ? true : false;
 	
 	// If points are to be awarded, award them
 	if ($found_waldo && defined('IN_ULTIMATE_POINTS') && $config['waldo_points'] > 0 && $user->data['is_registered'])
@@ -113,11 +112,13 @@
 	// End Where's Waldo MOD]]></action>
 		</edit>
 		<edit>
-			<find><![CDATA['SITE_LOGO_IMG'			=> $user->img('site_logo'),]]></find>
+			<find><![CDATA['SITE_LOGO_IMG']]></find>
 			<action type="after-add"><![CDATA[		// Begin Where's Waldo MOD
 		'FOUND_WALDO' 			=> $found_waldo,
-		'RAND_TOP'				=> $rand_top,
-		'RAND_LEFT'				=> $rand_left,
+		'RAND_VERTICAL'			=> ($rand_top > 50) ? 100 - $rand_top : $rand_top,
+		'RAND_HORIZONTAL'		=> ($rand_left > 50) ? 100 - $rand_left : $rand_left,
+		'POSITION_HORIZONTAL'	=> ($rand_left > 50) ? 'right' : 'left',
+		'POSITION_VERTICAL'		=> ($rand_top > 50) ? 'bottom': 'top',
 		'WALDO_URL'				=> $config['waldo_url_link'],
 		'WALDO_MOUSEOVER'		=> $config['waldo_mouseover'],
 		'WALDO_IMAGE'			=> $config['waldo_image_link'],
