@@ -98,6 +98,12 @@
 
 <body id="phpbb" class="section-{SCRIPT_NAME} {S_CONTENT_DIRECTION}">
 
+<!-- IF FOUND_WALDO -->
+	<div id="waldo" style="position: absolute; {POSITION_VERTICAL}: {RAND_VERTICAL}%; {POSITION_HORIZONTAL}: {RAND_HORIZONTAL}%; z-index: 9001;">
+		<!-- IF WALDO_URL --><a href="{WALDO_URL}"><!-- ENDIF --><img src="{WALDO_IMAGE}" title="{WALDO_MOUSEOVER}" alt="{WALDO_MOUSEOVER}" /><!-- IF WALDO_URL --></a><!-- ENDIF -->
+	</div>
+<!-- ENDIF -->
+
 <div id="wrap">
 	<a id="top" name="top" accesskey="t"></a>
 	<div id="page-header">

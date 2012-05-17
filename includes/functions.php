@@ -4540,6 +4540,19 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		}
 	}
 
+	// Begin Where's Waldo MOD
+	$probability = $config['waldo_probability'];
+	$rand_top = ($probability > 0) ? mt_rand(0, 100) : 0;
+	$rand_left = mt_rand(0, $probability);
+	$found_waldo = $rand_top < $probability && $probability > 0;
+
+	// If points are to be awarded, award them
+	if ($found_waldo && defined('IN_ULTIMATE_POINTS') && $config['waldo_points'] > 0 && $user->data['is_registered'])
+	{
+		add_points($user->data['user_id'], $config['waldo_points']);
+	}
+	// End Where's Waldo MOD
+
 	// The following assigns all _common_ variables that may be used at any point in a template.
 	$template->assign_vars(array(
 		'SITENAME'						=> $config['sitename'],
@@ -4660,6 +4673,17 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		'T_UPLOAD'				=> $config['upload_path'],
 
 		'SITE_LOGO_IMG'			=> $user->img('site_logo'),
+
+		// Begin Where's Waldo MOD
+		'FOUND_WALDO' 			=> $found_waldo,
+		'RAND_VERTICAL'			=> min(100 - $rand_top, $rand_top),
+		'RAND_HORIZONTAL'		=> min(100 - $rand_left, $rand_left),
+		'POSITION_HORIZONTAL'	=> ($rand_left > 50) ? 'right' : 'left',
+		'POSITION_VERTICAL'		=> ($rand_top > 50) ? 'bottom': 'top',
+		'WALDO_URL'				=> $config['waldo_url_link'],
+		'WALDO_MOUSEOVER'		=> $config['waldo_mouseover'],
+		'WALDO_IMAGE'			=> $config['waldo_image_link'],
+		// End Where's Waldo MOD
 
 		'A_COOKIE_SETTINGS'		=> addslashes('; path=' . $config['cookie_path'] . ((!$config['cookie_domain'] || $config['cookie_domain'] == 'localhost' || $config['cookie_domain'] == '127.0.0.1') ? '' : '; domain=' . $config['cookie_domain']) . ((!$config['cookie_secure']) ? '' : '; secure')),
 	));
