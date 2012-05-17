@@ -58,8 +58,8 @@ class acp_waldo
 					$error[] = $user->lang['PROBABILITY_ERROR'];
 				}
 
-				set_config('waldo_url_link', $new_url_link); 
-				set_config('waldo_mouseover', $new_mouseover); 
+				set_config('waldo_url_link', $new_url_link);
+				set_config('waldo_mouseover', $new_mouseover);
 				set_config('waldo_image_link', $new_image_link);
 				set_config('waldo_exclude', $new_exclude);
 
@@ -82,7 +82,7 @@ class acp_waldo
 
 			$l_waldo_status = ($config['waldo_probability'] > 0) ? $user->lang['ENABLED'] : $user->lang['DISABLED'];
 			$l_waldo_status = sprintf($user->lang['WALDO_STATUS'], $l_waldo_status);
-			
+
 			$l_up_status = (defined('IN_ULTIMATE_POINTS')) ? $user->lang['INSTALLED'] : $user->lang['NOT_INSTALLED'];
 			$l_up_status = sprintf($user->lang['UP_STATUS'], $l_up_status);
 
@@ -95,7 +95,7 @@ class acp_waldo
 
 				'L_WALDO_STATUS'		=> $l_waldo_status,
 				'L_UP_STATUS'			=> $l_up_status,
-				
+
 				'WALDO_PROBABILITY'		=> $config['waldo_probability'],
 				'WALDO_URL_LINK'		=> $config['waldo_url_link'],
 				'WALDO_IMAGE_LINK'		=> $config['waldo_image_link'],
