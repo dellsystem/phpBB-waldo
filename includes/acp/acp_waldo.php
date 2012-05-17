@@ -50,7 +50,7 @@ class acp_waldo
 				$new_vertical = request_var('waldo_vertical', 0);
 				$new_points = request_var('waldo_points', 0.0);
 				
-				if ($new_probability >= 0 && $new_probability <= 1)
+				if ($new_probability >= 0 && $new_probability <= 100)
 				{
 					set_config('waldo_probability', $new_probability);
 				}

@@ -67,6 +67,12 @@ $logo_img = 'images/waldo_body.png';
 * The version numbering must otherwise be compatible with the version_compare function - http://php.net/manual/en/function.version-compare.php
 */
 $versions = array(
+	'0.1.0'	=> array(
+		// Needs to be updated because it is now a value from 0 to 100
+		'config_update' => array(
+			array('waldo_probability', 1),
+		),
+	),
 	'0.0.5'	=> array(
 	),
 	
