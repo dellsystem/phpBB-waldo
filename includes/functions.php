@@ -4546,6 +4546,15 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 	$rand_left = mt_rand(0, $probability);
 	$found_waldo = $rand_top < $probability && $probability > 0;
 
+	// If the page is in the list of excluded pages, set $found_waldo to false
+	$this_page = basename($_SERVER['PHP_SELF']);
+	$excluded_pages = explode(' ', $config['waldo_exclude']);
+
+	if (in_array($this_page, $excluded_pages))
+	{
+		$found_waldo = false;
+	}
+
 	// If points are to be awarded, award them
 	if ($found_waldo && defined('IN_ULTIMATE_POINTS') && $config['waldo_points'] > 0 && $user->data['is_registered'])
 	{

@@ -46,6 +46,8 @@ $lang = array_merge($lang, array(
 	'WALDO_MOUSEOVER_EXPLAIN'	=> 'The text that will appear when a user hovers over Waldo. Set to blank to disable.',
 	'WALDO_IMAGE'				=> 'URL to Waldo image',
 	'WALDO_IMAGE_EXPLAIN'		=> "The URL, relative to the root of your phpBB installation, of the image you want to use. By default this is 'images/waldo_body.png', which comes with this MOD.",
+	'WALDO_EXCLUDE'				=> "Pages to exclude",
+	'WALDO_EXCLUDE_EXPLAIN'		=> "Enter the filenames of the pages that you don't want Waldo to ever appear on, separated by a space. e.g. 'index.php viewonline.php memberlist.php'",
 ));
 
 ?>

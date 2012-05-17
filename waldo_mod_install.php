@@ -76,6 +76,9 @@ $versions = array(
 			array('waldo_horizontal'),
 			array('waldo_vertical'),
 		),
+		'config_add' => array(
+			array('waldo_exclude', 'viewonline.php'),
+		),
 	),
 	'0.0.5'	=> array(
 	),

@@ -47,6 +47,7 @@ class acp_waldo
 				$new_image_link = request_var('waldo_image_link', '');
 				$new_mouseover = utf8_normalize_nfc(request_var('waldo_mouseover', '', true));
 				$new_points = request_var('waldo_points', 0.0);
+				$new_exclude = request_var('waldo_exclude', '');
 				
 				if ($new_probability >= 0 && $new_probability <= 100)
 				{
@@ -60,6 +61,7 @@ class acp_waldo
 				set_config('waldo_url_link', $new_url_link); 
 				set_config('waldo_mouseover', $new_mouseover); 
 				set_config('waldo_image_link', $new_image_link);
+				set_config('waldo_exclude', $new_exclude);
 
 				if ($new_points >= 0)
 				{
@@ -98,6 +100,7 @@ class acp_waldo
 				'WALDO_URL_LINK'		=> $config['waldo_url_link'],
 				'WALDO_IMAGE_LINK'		=> $config['waldo_image_link'],
 				'WALDO_MOUSEOVER'		=> $config['waldo_mouseover'],
+				'WALDO_EXCLUDE'			=> $config['waldo_exclude'],
 				'WALDO_POINTS'			=> $config['waldo_points'],
 				'POINTS_NAME'			=> $config['points_name'],
 				)
