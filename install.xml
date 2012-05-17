@@ -36,6 +36,7 @@
                 <change>Added percent-based absolute positioning (got rid of the window size configs)</change>
                 <change>Added use of utf8_normalize_nfc for the URL configs</change>
                 <change>Added alt tag to waldo image</change>
+                <change>Added the ability to prevent Waldo from appearing on particular pages</change>
             </changelog>
         </entry>
 		<entry>
@@ -104,8 +105,17 @@
 	$probability = $config['waldo_probability'];
 	$rand_top = ($probability > 0) ? mt_rand(0, 100) : 0;
 	$rand_left = mt_rand(0, $probability);
-	$found_waldo = ($rand_top < $probability && $probability > 0) ? true : false;
-	
+	$found_waldo = $rand_top < $probability && $probability > 0;
+
+	// If the page is in the list of excluded pages, set $found_waldo to false
+	$this_page = basename($_SERVER['PHP_SELF']);
+	$excluded_pages = explode(' ', $config['waldo_exclude']);
+
+	if (in_array($this_page, $excluded_pages))
+	{
+		$found_waldo = false;
+	}
+
 	// If points are to be awarded, award them
 	if ($found_waldo && defined('IN_ULTIMATE_POINTS') && $config['waldo_points'] > 0 && $user->data['is_registered'])
 	{
@@ -117,8 +127,8 @@
 			<find><![CDATA['SITE_LOGO_IMG']]></find>
 			<action type="after-add"><![CDATA[		// Begin Where's Waldo MOD
 		'FOUND_WALDO' 			=> $found_waldo,
-		'RAND_VERTICAL'			=> ($rand_top > 50) ? 100 - $rand_top : $rand_top,
-		'RAND_HORIZONTAL'		=> ($rand_left > 50) ? 100 - $rand_left : $rand_left,
+		'RAND_VERTICAL'			=> min(100 - $rand_top, $rand_top),
+		'RAND_HORIZONTAL'		=> min(100 - $rand_left, $rand_left),
 		'POSITION_HORIZONTAL'	=> ($rand_left > 50) ? 'right' : 'left',
 		'POSITION_VERTICAL'		=> ($rand_top > 50) ? 'bottom': 'top',
 		'WALDO_URL'				=> $config['waldo_url_link'],
