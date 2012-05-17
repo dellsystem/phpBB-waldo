@@ -72,6 +72,10 @@ $versions = array(
 		'config_update' => array(
 			array('waldo_probability', 1),
 		),
+		'config_remove' => array(
+			array('waldo_horizontal'),
+			array('waldo_vertical'),
+		),
 	),
 	'0.0.5'	=> array(
 	),

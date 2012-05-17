@@ -46,8 +46,6 @@ class acp_waldo
 				$new_url_link = request_var('waldo_url_link', '');
 				$new_image_link = request_var('waldo_image_link', '');
 				$new_mouseover = utf8_normalize_nfc(request_var('waldo_mouseover', '', true));
-				$new_horizontal = request_var('waldo_horizontal', 0);
-				$new_vertical = request_var('waldo_vertical', 0);
 				$new_points = request_var('waldo_points', 0.0);
 				
 				if ($new_probability >= 0 && $new_probability <= 100)
@@ -63,25 +61,7 @@ class acp_waldo
 				set_config('waldo_mouseover', $new_mouseover); 
 				set_config('waldo_image_link', $new_image_link);
 
-				if ($new_horizontal > 0)
-				{
-					set_config('waldo_horizontal', $new_horizontal);
-				}
-				else
-				{
-					$error[] = $user->lang['HORIZONTAL_MAX_ERROR'];
-				}
-
-				if ($new_vertical > 0)
-				{
-					set_config('waldo_vertical', $new_vertical);
-				}
-				else
-				{
-					$error[] = $user->lang['VERTICAL_MAX_ERROR'];
-				}
-
-				if ( $new_points >= 0 )
+				if ($new_points >= 0)
 				{
 					set_config('waldo_points', $new_points);
 				}
@@ -118,8 +98,6 @@ class acp_waldo
 				'WALDO_URL_LINK'		=> $config['waldo_url_link'],
 				'WALDO_IMAGE_LINK'		=> $config['waldo_image_link'],
 				'WALDO_MOUSEOVER'		=> $config['waldo_mouseover'],
-				'WALDO_HORIZONTAL'		=> $config['waldo_horizontal'],
-				'WALDO_VERTICAL'		=> $config['waldo_vertical'],
 				'WALDO_POINTS'			=> $config['waldo_points'],
 				'POINTS_NAME'			=> $config['points_name'],
 				)
