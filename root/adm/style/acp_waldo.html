@@ -6,9 +6,9 @@
 
 <p>{L_WALDO_SUMMARY}</p>
 
-<p>{L_WALDO_STATUS}</p>
+<p>{L_WALDO_STATUS}: <!-- IF WALDO_PROBABILITY > 0 --><strong>{L_ENABLED}</strong><!-- ELSE -->{L_DISABLED}<!-- ENDIF --></p>
 
-<p>{L_UP_STATUS}</p>
+<p>{L_POINTS_STATUS}: <!-- IF S_UP_ENABLED --><strong>{L_ENABLED}</strong><!-- ELSE -->{L_DISABLED}<!-- ENDIF --></p>
 
 <!-- IF S_ERROR -->
 	<div class="errorbox">
