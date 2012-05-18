@@ -5,7 +5,7 @@
 <header>
 	<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
 	<title lang="en">Where's Waldo Mod</title>
-	<description lang="en">A small image of Waldo [US] / Wally [UK] may appear somewhere on every page as you browse the board. The probability of finding Waldo on any page can be adjusted during installation, with the default probability at 4%.</description>
+	<description lang="en">A small image of Waldo [US] / Wally [UK] may appear somewhere on every page as you browse the board. The probability of finding Waldo on any page can be adjusted during installation, with the default probability at 1%.</description>
 
 	<author-notes lang="en">Can be configured to work with the Ultimate Points MOD if you have it installed, so that finding or clicking on Waldo will give the user points.</author-notes>
 
@@ -37,6 +37,7 @@
                 <change>Added use of utf8_normalize_nfc for the URL configs</change>
                 <change>Added alt tag to waldo image</change>
                 <change>Added the ability to prevent Waldo from appearing on particular pages</change>
+                <change>Added a "waiting time" feature, to prevent users from seeing Waldo too often</change>
             </changelog>
         </entry>
 		<entry>
@@ -100,6 +101,7 @@
 	</copy>
 	<open src="includes/functions.php">
 		<edit>
+			<comment lang="en">If you have the Ultimate Points MOD installed, make sure that the below comes BEFORE the Ultimate Points code (i.e. before <![CDATA[// Start Ultimate Points]]>).</comment>
 			<find><![CDATA[// The following assigns all _common_ variables that may be used at any point in a template.]]></find>
 			<action type="before-add"><![CDATA[	// Begin Where's Waldo MOD
 	$probability = $config['waldo_probability'];
@@ -107,19 +109,33 @@
 	$rand_left = mt_rand(0, $probability);
 	$found_waldo = $rand_top < $probability && $probability > 0;
 
-	// If the page is in the list of excluded pages, set $found_waldo to false
+	// If the page is in the list of excluded pages
+	// OR if this user has seen waldo too recently, set to false
 	$this_page = basename($_SERVER['PHP_SELF']);
 	$excluded_pages = explode(' ', $config['waldo_exclude']);
+	$last_seen = $user->data['user_waldo_time'];
+	$must_wait = $config['waldo_wait_time'];
+	$time_diff = time() - $last_seen;
 
-	if (in_array($this_page, $excluded_pages))
+	if (in_array($this_page, $excluded_pages) || $time_diff < $must_wait)
 	{
 		$found_waldo = false;
 	}
 
 	// If points are to be awarded, award them
-	if ($found_waldo && defined('IN_ULTIMATE_POINTS') && $config['waldo_points'] > 0 && $user->data['is_registered'])
+	if ($found_waldo && $config['points_enable'] && $config['waldo_points'] > 0 && $user->data['is_registered'])
 	{
 		add_points($user->data['user_id'], $config['waldo_points']);
+		$user->data['user_points'] += $config['waldo_points'];
+
+		// Update the time last seen iff a waiting time has been set
+		if ($must_wait > 0)
+		{
+			$sql = "UPDATE " . USERS_TABLE . "
+					SET user_waldo_time = " . time() . "
+					WHERE user_id = " . $user->data['user_id'];
+			$db->sql_query($sql);
+		}
 	}
 	// End Where's Waldo MOD]]></action>
 		</edit>
