@@ -48,7 +48,8 @@ class acp_waldo
 				$new_mouseover = utf8_normalize_nfc(request_var('waldo_mouseover', '', true));
 				$new_points = request_var('waldo_points', 0.0);
 				$new_exclude = request_var('waldo_exclude', '');
-				
+				$new_wait_time = request_var('waldo_wait_time', 0);
+
 				if ($new_probability >= 0 && $new_probability <= 100)
 				{
 					set_config('waldo_probability', $new_probability);
@@ -58,8 +59,17 @@ class acp_waldo
 					$error[] = $user->lang['PROBABILITY_ERROR'];
 				}
 
-				set_config('waldo_url_link', $new_url_link); 
-				set_config('waldo_mouseover', $new_mouseover); 
+				if ($new_wait_time >= 0)
+				{
+					set_config('waldo_wait_time', $new_wait_time);
+				}
+				else
+				{
+					$error[] = $user->lang['WAIT_TIME_ERROR'];
+				}
+
+				set_config('waldo_url_link', $new_url_link);
+				set_config('waldo_mouseover', $new_mouseover);
 				set_config('waldo_image_link', $new_image_link);
 				set_config('waldo_exclude', $new_exclude);
 
@@ -71,7 +81,7 @@ class acp_waldo
 				{
 					$error[] = $user->lang['WALDO_POINTS_ERROR'];
 				}
-				
+
 				// If there are no errors, display a success message; else, show the error box
 				if (!sizeof($error))
 				{
@@ -95,6 +105,7 @@ class acp_waldo
 				'WALDO_EXCLUDE'			=> $config['waldo_exclude'],
 				'WALDO_POINTS'			=> $config['waldo_points'],
 				'POINTS_NAME'			=> $config['points_name'],
+				'WALDO_WAIT_TIME'		=> $config['waldo_wait_time'],
 				)
 			);
 			break;
