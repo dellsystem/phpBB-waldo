@@ -46,7 +46,7 @@
 	<fieldset>
 		<legend>{L_UP_EXTENSION}</legend>
 			<dl>
-			<dt><label for="waldo_points">{L_WALDO_POINTS}:</label><br /><span>{L_WALDO_POINTS_EXPLAIN}</span></dt>
+			<dt><label for="waldo_points">{L_WALDO_POINTS}:</label><br /><span>{L_WALDO_POINTS_EXPLAIN}<!-- IF not S_UP_ENABLED --> <strong>{L_WALDO_POINTS_DISABLED}</strong><!-- ENDIF --></span></dt>
 			<dd><input id="waldo_points" type="text" size="8" maxlength="8" name="waldo_points" value="{WALDO_POINTS}" /> {POINTS_NAME}</dd>
 		</dl>
 	</fieldset>
