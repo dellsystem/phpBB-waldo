@@ -27,6 +27,7 @@ $lang = array_merge($lang, array(
 	'PROBABILITY_ERROR'			=> 'The probability needs to be between 0 and 100.',
 	'HORIZONTAL_MAX_ERROR'		=> 'Please enter an integer greater than zero for the horizontal maximum.',
 	'VERTICAL_MAX_ERROR'		=> 'Please enter an integer greater than zero for the vertical maximum.',
+	'WAIT_TIME_ERROR'			=> 'The wait time needs to be a non-negative integer.',
 	'WALDO_SUMMARY'				=> "Here you can view and change the settings for the Where's Waldo MOD. This MOD can optionally be integrated with the Ultimate Points MOD (or another compatible points MOD). Note that you do not need Ultimate Points in order to use this MOD; it simply provides extra features.",
 	'WALDO_STATUS'				=> "Where's Waldo MOD status",
 	'POINTS_STATUS'				=> 'Ultimate Points MOD status',
@@ -45,6 +46,8 @@ $lang = array_merge($lang, array(
 	'WALDO_IMAGE_EXPLAIN'		=> "The URL, relative to the root of your phpBB installation, of the image you want to use. By default this is 'images/waldo_body.png', which comes with this MOD.",
 	'WALDO_EXCLUDE'				=> "Pages to exclude",
 	'WALDO_EXCLUDE_EXPLAIN'		=> "Enter the filenames of the pages that you don't want Waldo to ever appear on, separated by a space. e.g. 'index.php viewonline.php memberlist.php'",
+	'WALDO_WAIT_TIME'			=> 'Time a user must wait before seeing Waldo again',
+	'WALDO_WAIT_TIME_EXPLAIN'	=> 'Enter the number of seconds a user must wait before he or she can see Waldo again. Set to 86400 by default to prevent users from seeing Waldo more than once per day. To disable the wait time, set this to 0.',
 ));
 
 ?>

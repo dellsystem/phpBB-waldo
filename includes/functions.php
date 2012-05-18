@@ -4546,19 +4546,33 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 	$rand_left = mt_rand(0, $probability);
 	$found_waldo = $rand_top < $probability && $probability > 0;
 
-	// If the page is in the list of excluded pages, set $found_waldo to false
+	// If the page is in the list of excluded pages
+	// OR if this user has seen waldo too recently, set to false
 	$this_page = basename($_SERVER['PHP_SELF']);
 	$excluded_pages = explode(' ', $config['waldo_exclude']);
+	$last_seen = $user->data['user_waldo_time'];
+	$must_wait = $config['waldo_wait_time'];
+	$time_diff = time() - $last_seen;
 
-	if (in_array($this_page, $excluded_pages))
+	if (in_array($this_page, $excluded_pages) || $time_diff < $must_wait)
 	{
 		$found_waldo = false;
 	}
 
 	// If points are to be awarded, award them
-	if ($found_waldo && defined('IN_ULTIMATE_POINTS') && $config['waldo_points'] > 0 && $user->data['is_registered'])
+	if ($found_waldo && $config['points_enable'] && $config['waldo_points'] > 0 && $user->data['is_registered'])
 	{
 		add_points($user->data['user_id'], $config['waldo_points']);
+		$user->data['user_points'] += $config['waldo_points'];
+
+		// Update the time last seen iff a waiting time has been set
+		if ($must_wait > 0)
+		{
+			$sql = "UPDATE " . USERS_TABLE . "
+					SET user_waldo_time = " . time() . "
+					WHERE user_id = " . $user->data['user_id'];
+			$db->sql_query($sql);
+		}
 	}
 	// End Where's Waldo MOD
 

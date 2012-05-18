@@ -78,6 +78,12 @@ $versions = array(
 		),
 		'config_add' => array(
 			array('waldo_exclude', 'viewonline.php'),
+			// Amount of time you have to wait before seeing Waldo again
+			array('waldo_wait_time', 86400),
+		),
+		'table_column_add' => array(
+			// Timestamp for the last time that waldo was seen
+			array(USERS_TABLE, 'user_waldo_time', array('TIMESTAMP', 0)),
 		),
 	),
 	'0.0.5'	=> array(
