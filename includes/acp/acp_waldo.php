@@ -80,21 +80,13 @@ class acp_waldo
 				}
 			}
 
-			$l_waldo_status = ($config['waldo_probability'] > 0) ? $user->lang['ENABLED'] : $user->lang['DISABLED'];
-			$l_waldo_status = sprintf($user->lang['WALDO_STATUS'], $l_waldo_status);
-
-			$l_up_status = (defined('IN_ULTIMATE_POINTS')) ? $user->lang['INSTALLED'] : $user->lang['NOT_INSTALLED'];
-			$l_up_status = sprintf($user->lang['UP_STATUS'], $l_up_status);
-
 			$template->assign_vars(array(
-				'S_UP_INSTALLED'		=> defined('IN_ULTIMATE_POINTS') ? true : false,
+				'S_UP_INSTALLED'		=> defined('IN_ULTIMATE_POINTS'),
+				'S_UP_ENABLED'			=> $config['points_enable'],
 
 				'S_ERROR'				=> (sizeof($error)) ? true : false,
 				'ERROR_MSG'				=> implode('<br />', $error),
 				'U_ACTION'				=> $this->u_action,
-
-				'L_WALDO_STATUS'		=> $l_waldo_status,
-				'L_UP_STATUS'			=> $l_up_status,
 
 				'WALDO_PROBABILITY'		=> $config['waldo_probability'],
 				'WALDO_URL_LINK'		=> $config['waldo_url_link'],
