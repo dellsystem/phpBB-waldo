@@ -36,7 +36,7 @@ class acp_waldo
 			case 'index':
 			$this->page_title = 'ACP_WALDO_MOD';
  			$this->tpl_name = 'acp_waldo';
-	
+
 			$error = array();
 
 			if ($submit)
@@ -71,7 +71,7 @@ class acp_waldo
 				{
 					$error[] = $user->lang['WALDO_POINTS_ERROR'];
 				}
-				
+
 				// If there are no errors, display a success message; else, show the error box
 				if (!sizeof($error))
 				{
