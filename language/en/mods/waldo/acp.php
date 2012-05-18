@@ -25,8 +25,6 @@ if (empty($lang) || !is_array($lang))
 // Merge the following language entries into the lang array
 $lang = array_merge($lang, array(
 	'PROBABILITY_ERROR'			=> 'The probability needs to be between 0 and 100.',
-	'HORIZONTAL_MAX_ERROR'		=> 'Please enter an integer greater than zero for the horizontal maximum.',
-	'VERTICAL_MAX_ERROR'		=> 'Please enter an integer greater than zero for the vertical maximum.',
 	'WAIT_TIME_ERROR'			=> 'The wait time needs to be a non-negative integer.',
 	'WALDO_SUMMARY'				=> "Here you can view and change the settings for the Where's Waldo MOD. This MOD can optionally be integrated with the Ultimate Points MOD (or another compatible points MOD). Note that you do not need Ultimate Points in order to use this MOD; it simply provides extra features.",
 	'WALDO_STATUS'				=> "Where's Waldo MOD status",
