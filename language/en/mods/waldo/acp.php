@@ -38,6 +38,7 @@ $lang = array_merge($lang, array(
 	'WALDO_POINTS'				=> 'Points to award',
 	'WALDO_POINTS_EXPLAIN'		=> 'The number of points to be awarded to each user who stumbles upon Waldo. Set to 0 to disable. Only registered users will be able to receive points.',
 	'WALDO_POINTS_ERROR'		=> 'Please enter a non-negative number for the number of points to award',
+	'WALDO_POINTS_DISABLED'		=> 'Note: the points system is currently disabled - please enable it if you wish to use this feature.',
 	'WALDO_MOUSEOVER'			=> 'Mouseover text',
 	'WALDO_MOUSEOVER_EXPLAIN'	=> 'The text that will appear when a user hovers over Waldo. Set to blank to disable.',
 	'WALDO_IMAGE'				=> 'URL to Waldo image',
