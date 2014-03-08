@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* @package Dynamo (Dynamic Avatar MOD for phpBB3)
+* @package Where's Waldo MOD
 * @version $Id: acp.php ilostwaldo@gmail.com$
 * @copyright (c) 2011 dellsystem (www.dellsystem.me)
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License 
