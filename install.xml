@@ -9,6 +9,8 @@
 
 	<author-notes lang="en">Can be configured to work with the Ultimate Points MOD if you have it installed, so that finding or clicking on Waldo will give the user points.</author-notes>
 
+    <github>https://github.com/dellsystem/phpBB-waldo</github>
+
 	<author-group>
 		<author>
 			<username>dellsystem</username>
