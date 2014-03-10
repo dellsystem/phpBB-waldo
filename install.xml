@@ -1,111 +1,106 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
-<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD. Although MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD. No support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
-<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
-<header>
-	<license>http://opensource.org/licenses/gpl-license.php GNU General Public License v2</license>
-	<title lang="en">Where's Waldo Mod</title>
-	<description lang="en">A small image of Waldo [US] / Wally [UK] may appear somewhere on every page as you browse the board. The probability of finding Waldo on any page can be adjusted during installation, with the default probability at 1%.</description>
-
-	<author-notes lang="en">Can be configured to work with the Ultimate Points MOD if you have it installed, so that finding or clicking on Waldo will give the user points.</author-notes>
-
-    <github>https://github.com/dellsystem/phpBB-waldo</github>
-
-	<author-group>
-		<author>
-			<username>dellsystem</username>
-			<realname>Wendy Liu</realname>
-			<homepage>http://www.dellsystem.me/phpbb</homepage>
-			<email>dellsystem@phpbb.com</email>
-		</author>
-	</author-group>
-
-	<mod-version>0.1.0</mod-version>
-
-	<installation>
-		<level>easy</level>
-		<time>300</time>
-		<target-version>3.0.12</target-version>
-	</installation>
-
-	<history>
-        <entry>
-            <date>2012-05-17</date>
-            <rev-version>0.1.0</rev-version>
-            <changelog lang="en">
-                <change>Added missing language files to the "copy" step in install.xml</change>
-                <change>Added use of a percent probability in the ACP</change>
-                <change>Added percent-based absolute positioning (got rid of the window size configs)</change>
-                <change>Added use of utf8_normalize_nfc for the URL configs</change>
-                <change>Added alt tag to waldo image</change>
-                <change>Added the ability to prevent Waldo from appearing on particular pages</change>
-                <change>Added a "waiting time" feature, to prevent users from seeing Waldo too often</change>
-            </changelog>
-        </entry>
-		<entry>
-			<date>2011-05-31</date>
-			<rev-version>0.0.5</rev-version>
-			<changelog lang="en">
-				<change>Deleted another unnecessary reference to $waldo_link in functions.php</change>
-			</changelog>
-		</entry>
-		<entry>
-			<date>2011-05-26</date>
-			<rev-version>0.0.4</rev-version>
-			<changelog lang="en">
-				<change>Replaced hardcoded text with language constants in ACP module</change>
-				<change>Fixed use of utf8_normalize_nfc on mouseover text</change>
-				<change>Fixed other bugs introduced in last update</change>
-			</changelog>
-		</entry>
-		<entry>
-			<date>2011-05-24</date>
-			<rev-version>0.0.3</rev-version>
-			<changelog lang="en">
-				<change>Got rid of unnecessary reference to $waldo_link in functions.php</change>
-				<change>Added call to utf8_normalize_nfc on mouseover text</change>
-			</changelog>
-		</entry>
-        <entry>
-            <date>2011-05-22</date>
-            <rev-version>0.0.2</rev-version>
-            <changelog lang="en">
-                <change>Incorporated use of language constants within the ACP</change>
-                <change>Made use of trigger_error upon changing config settings</change>
-                <change>Fixed casting of some post variables (string to float)</change>
-                <change>Added z-index to the div so that Waldo appears above everything else</change>
-                <change>Cleaned up inline styling of the Waldo div</change>
-                <change>Added mouseover text (config setting)</change>
-                <change>Cleaned up changes in functions.php and overall_header.html</change>
-                <change>Added option to change the image URL (config setting)</change>
-                <change>Added log entry upon updating settings</change>
-            </changelog>
-        </entry>
-		<entry>
-			<date>2010-06-29</date>
-			<rev-version>0.0.1</rev-version>
-			<changelog lang="en">
-				<change>First version released</change>
-			</changelog>
-		</entry>
-	</history>
-</header>
-
-<action-group>
-	<copy>
-		<file from="root/adm/style/acp_waldo.html" to="adm/style/acp_waldo.html" />
-		<file from="root/includes/acp/acp_waldo.php" to="includes/acp/acp_waldo.php" />
-		<file from="root/includes/acp/info/acp_waldo.php" to="includes/acp/info/acp_waldo.php" />
-		<file from="root/waldo_mod_install.php" to="waldo_mod_install.php" />
-		<file from="root/images/waldo_body.png" to="images/waldo_body.png" />
-        <file from="root/language/en/mods/info_acp_waldo.php" to="language/en/mods/info_acp_waldo.php" />
-        <file from="root/language/en/mods/waldo/acp.php" to="language/en/mods/waldo/acp.php" />
-	</copy>
-	<open src="includes/functions.php">
-		<edit>
-			<comment lang="en">If you have the Ultimate Points MOD installed, make sure that the below comes BEFORE the Ultimate Points code (i.e. before <![CDATA[// Start Ultimate Points]]>).</comment>
-			<find><![CDATA[// The following assigns all _common_ variables that may be used at any point in a template.]]></find>
-			<action type="before-add"><![CDATA[	// Begin Where's Waldo MOD
+<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://www.phpbb.com/mods/xml/modx-1.2.6.xsd">
+	<header>
+		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
+		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
+		<title lang="en"><![CDATA[Where's Waldo Mod]]></title>
+		<description lang="en"><![CDATA[A small image of Waldo [US] / Wally [UK] may appear somewhere on every page as you browse the board. The probability of finding Waldo on any page can be adjusted during installation, with the default probability at 1%.]]></description>
+		<author-notes lang="en"><![CDATA[Can be configured to work with the Ultimate Points MOD if you have it installed, so that finding or clicking on Waldo will give the user points.]]></author-notes>
+		<github><![CDATA[https://github.com/dellsystem/phpBB-waldo]]></github>
+		<author-group>
+			<author>
+				<realname><![CDATA[Wendy Liu]]></realname>
+				<username><![CDATA[dellsystem]]></username>
+				<homepage><![CDATA[http://www.dellsystem.me/phpbb]]></homepage>
+				<email><![CDATA[dellsystem@phpbb.com]]></email>
+			</author>
+		</author-group>
+		<mod-version>0.1.0</mod-version>
+		<installation>
+			<level>easy</level>
+			<time>300</time>
+			<target-version>3.0.12</target-version>
+		</installation>
+		<history>
+			<entry>
+				<date>2010-06-29</date>
+				<rev-version>0.0.1</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[First version released]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2011-05-22</date>
+				<rev-version>0.0.2</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Incorporated use of language constants within the ACP]]></change>
+					<change><![CDATA[Made use of trigger_error upon changing config settings]]></change>
+					<change><![CDATA[Fixed casting of some post variables (string to float)]]></change>
+					<change><![CDATA[Added z-index to the div so that Waldo appears above everything else]]></change>
+					<change><![CDATA[Cleaned up inline styling of the Waldo div]]></change>
+					<change><![CDATA[Added mouseover text (config setting)]]></change>
+					<change><![CDATA[Cleaned up changes in functions.php and overall_header.html]]></change>
+					<change><![CDATA[Added option to change the image URL (config setting)]]></change>
+					<change><![CDATA[Added log entry upon updating settings]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2011-05-24</date>
+				<rev-version>0.0.3</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Got rid of unnecessary reference to $waldo_link in functions.php]]></change>
+					<change><![CDATA[Added call to utf8_normalize_nfc on mouseover text]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2011-05-26</date>
+				<rev-version>0.0.4</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Replaced hardcoded text with language constants in ACP module]]></change>
+					<change><![CDATA[Fixed use of utf8_normalize_nfc on mouseover text]]></change>
+					<change><![CDATA[Fixed other bugs introduced in last update]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2011-05-31</date>
+				<rev-version>0.0.5</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Deleted another unnecessary reference to $waldo_link in functions.php]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2012-05-17</date>
+				<rev-version>0.1.0</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Added missing language files to the "copy" step in install.xml]]></change>
+					<change><![CDATA[Added use of a percent probability in the ACP]]></change>
+					<change><![CDATA[Added percent-based absolute positioning (got rid of the window size configs)]]></change>
+					<change><![CDATA[Added use of utf8_normalize_nfc for the URL configs]]></change>
+					<change><![CDATA[Added alt tag to waldo image]]></change>
+					<change><![CDATA[Added the ability to prevent Waldo from appearing on particular pages]]></change>
+					<change><![CDATA[Added a "waiting time" feature, to prevent users from seeing Waldo too often]]></change>
+				</changelog>
+			</entry>
+		</history>
+	</header>
+	<action-group>
+		<copy>
+			<file from="root/adm/style/acp_waldo.html" to="adm/style/acp_waldo.html"/>
+			<file from="root/includes/acp/acp_waldo.php" to="includes/acp/acp_waldo.php"/>
+			<file from="root/includes/acp/info/acp_waldo.php" to="includes/acp/info/acp_waldo.php"/>
+			<file from="root/waldo_mod_install.php" to="waldo_mod_install.php"/>
+			<file from="root/images/waldo_body.png" to="images/waldo_body.png"/>
+			<file from="root/language/en/mods/info_acp_waldo.php" to="language/en/mods/info_acp_waldo.php"/>
+			<file from="root/language/en/mods/waldo/acp.php" to="language/en/mods/waldo/acp.php"/>
+		</copy>
+		<open src="includes/functions.php">
+			<edit>
+				<comment lang="en"><![CDATA[If you have the Ultimate Points MOD installed, make sure that the below comes BEFORE the Ultimate Points code (i.e. before // Start Ultimate Points).]]></comment>
+				<find><![CDATA[// The following assigns all _common_ variables that may be used at any point in a template.]]></find>
+				<action type="before-add"><![CDATA[	// Begin Where's Waldo MOD
 	$probability = $config['waldo_probability'];
 	$rand_top = ($probability > 0) ? mt_rand(0, 100) : 0;
 	$rand_left = mt_rand(0, $probability);
@@ -140,10 +135,10 @@
 		}
 	}
 	// End Where's Waldo MOD]]></action>
-		</edit>
-		<edit>
-			<find><![CDATA['SITE_LOGO_IMG']]></find>
-			<action type="after-add"><![CDATA[		// Begin Where's Waldo MOD
+			</edit>
+			<edit>
+				<find><![CDATA['SITE_LOGO_IMG']]></find>
+				<action type="after-add"><![CDATA[		// Begin Where's Waldo MOD
 		'FOUND_WALDO' 			=> $found_waldo,
 		'RAND_VERTICAL'			=> min(100 - $rand_top, $rand_top),
 		'RAND_HORIZONTAL'		=> min(100 - $rand_left, $rand_left),
@@ -153,21 +148,20 @@
 		'WALDO_MOUSEOVER'		=> $config['waldo_mouseover'],
 		'WALDO_IMAGE'			=> $config['waldo_image_link'],
 		// End Where's Waldo MOD]]></action>
-		</edit>
-	</open>
-	<open src="styles/prosilver/template/overall_header.html">
-		<edit>
-			<comment lang="en">For styles other than prosilver, make the same change. As the tip suggests, this is indeed a partial find and not the whole line. Add the code below in the next line.</comment>
-			<find><![CDATA[<body]]></find>
-			<action type="after-add"><![CDATA[<!-- IF FOUND_WALDO -->
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/overall_header.html">
+			<edit>
+				<comment lang="en"><![CDATA[For styles other than prosilver, make the same change. As the tip suggests, this is indeed a partial find and not the whole line. Add the code below in the next line.]]></comment>
+				<find><![CDATA[<body]]></find>
+				<action type="after-add"><![CDATA[<!-- IF FOUND_WALDO -->
 	<div id="waldo" style="position: absolute; {POSITION_VERTICAL}: {RAND_VERTICAL}%; {POSITION_HORIZONTAL}: {RAND_HORIZONTAL}%; z-index: 9001;">
 		<!-- IF WALDO_URL --><a href="{WALDO_URL}"><!-- ENDIF --><img src="{WALDO_IMAGE}" title="{WALDO_MOUSEOVER}" alt="{WALDO_MOUSEOVER}" /><!-- IF WALDO_URL --></a><!-- ENDIF -->
 	</div>
 <!-- ENDIF -->]]></action>
-		</edit>
-	</open>
-    <diy-instructions lang="en">Navigate to waldo_mod_install.php in the root of your forum and follow the install instructions.
-
-You can configure this MOD in the ACP, under the .MODs tab.</diy-instructions>
-</action-group>
+			</edit>
+		</open>
+		<php-installer><![CDATA[waldo_mod_install.php]]></php-installer>
+		<diy-instructions lang="en"><![CDATA[You can configure this MOD in the ACP, under the .MODs tab.]]></diy-instructions>
+	</action-group>
 </mod>
