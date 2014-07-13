@@ -18,7 +18,7 @@
 				<email><![CDATA[dellsystem@phpbb.com]]></email>
 			</author>
 		</author-group>
-		<mod-version>0.1.0</mod-version>
+		<mod-version>0.1.1</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
@@ -82,6 +82,13 @@
 					<change><![CDATA[Added alt tag to waldo image]]></change>
 					<change><![CDATA[Added the ability to prevent Waldo from appearing on particular pages]]></change>
 					<change><![CDATA[Added a "waiting time" feature, to prevent users from seeing Waldo too often]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2014-07-13</date>
+				<rev-version>0.1.1</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Hid the wait time setting when UPS is not installed]]></change>
 				</changelog>
 			</entry>
 		</history>
