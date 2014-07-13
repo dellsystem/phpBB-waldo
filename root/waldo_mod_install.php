@@ -95,7 +95,6 @@ $versions = array(
 	'0.0.3'	=> array(
 	),
 	
-	// Version 0.0.2
 	'0.0.2'	=> array(
 		'config_add'	=> array(
 			array('waldo_mouseover', ''),
@@ -103,9 +102,7 @@ $versions = array(
 		),
 	),
 		
-	// Version 0.0.1
 	'0.0.1'	=> array(
-		// Add the configs
 		'config_add'	=> array(
 			array('waldo_probability', '0.04'),
 			array('waldo_horizontal', 1000),
@@ -114,7 +111,6 @@ $versions = array(
 			array('waldo_points', 0),
 		),
 
-		// Add the module
 		'module_add' => array(
 			// Add category Where's Waldo MOD under the .MODs tab
 			array('acp', 'ACP_CAT_DOT_MODS', 'ACP_WALDO_MOD'),
