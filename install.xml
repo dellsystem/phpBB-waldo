@@ -153,7 +153,7 @@
 		'POSITION_VERTICAL'		=> ($rand_top > 50) ? 'bottom': 'top',
 		'WALDO_URL'				=> $config['waldo_url_link'],
 		'WALDO_MOUSEOVER'		=> $config['waldo_mouseover'],
-		'WALDO_IMAGE'			=> $config['waldo_image_link'],
+		'WALDO_IMAGE'			=> $phpbb_root_path . $config['waldo_image_link'],
 		// End Where's Waldo MOD]]></action>
 			</edit>
 		</open>
