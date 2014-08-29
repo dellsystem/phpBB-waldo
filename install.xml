@@ -18,7 +18,7 @@
 				<email><![CDATA[dellsystem@phpbb.com]]></email>
 			</author>
 		</author-group>
-		<mod-version>0.1.1</mod-version>
+		<mod-version>0.1.2</mod-version>
 		<installation>
 			<level>easy</level>
 			<time>300</time>
@@ -89,6 +89,13 @@
 				<rev-version>0.1.1</rev-version>
 				<changelog lang="en">
 					<change><![CDATA[Hid the wait time setting when UPS is not installed]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2014-08-29</date>
+				<rev-version>0.1.2</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Added $phpbb_root_path to Waldo image source link (fixes relative path issues)]]></change>
 				</changelog>
 			</entry>
 		</history>
